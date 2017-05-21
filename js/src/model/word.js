@@ -1,0 +1,6 @@
+/*
+ *
+ */
+PWord.fn.Word = function(){
+	
+};

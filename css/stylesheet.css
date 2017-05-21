@@ -1,0 +1,76 @@
+/****************************************************************
+*****************************************************************
+
+	StyleSheet
+
+*****************************************************************
+*****************************************************************
+****************************************************************/
+
+/*
+ *	Fonts
+ *
+ ****************************************/
+
+@font-face {
+    font-family: "Roboto-R";
+    src: url(../fonts/Roboto-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-M";
+    src: url(../fonts/Roboto-MediumItalic.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-T";
+    src: url(../fonts/Roboto-Thin.ttf);
+}
+
+@font-face {
+    font-family: "Roboto-B";
+    src: url(../fonts/Roboto-Bold.ttf);
+}
+
+/*
+ *	Base CSS
+ *
+ ****************************************/
+
+.inner{
+	max-width:108em;
+	padding: 2em;
+	margin: auto;
+}
+
+
+/*
+ *	Particles
+ *
+ ****************************************/
+
+#canvas-container{
+	position : absolute;
+}
+
+#particles-controller{
+	font-size: 3em;
+	font-family: "Roboto-T";
+	height: 100px;
+	width: 1000px;
+	position : absolute;
+	top:0;
+	left: 0;
+	z-index: 200;
+}
+
+#particles-controller:hover{
+	cursor: pointer;
+}
+
+#canvas{
+	position : absolute;
+	top:0;
+	left: 0;
+	z-index: 100;
+}
