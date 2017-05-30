@@ -25,7 +25,7 @@
 
 		// Define a local copy of PWord
 		PWord = function( selector, wordList, options ) {
-			PWord.fn.init( selector, wordList, options );
+			return new PWord.fn.init( selector, wordList, options );
 		}
 
 
@@ -45,13 +45,13 @@
 		 * Contains all the resources/elements that will be animated in
 		 * the canvas.
 		 *
-		 *  > wordIndex 	: Index of the current word displayed.
+		 *	> wordIndex 	: Index of the current word displayed.
 		 *  > currentWord 	: Current displayed word in the canvas.
 		 *  > wordList     	: List of words that will be displayed.
 		 *  > particles
-		 *	> Fake     	: Particles that are only floating in the background.
+		 *		> Fake     	: Particles that are only floating in the background.
 		 *     	> Real     	: Particles the form the word when the user hovers
-		 *                        the canvas.
+		 *                    the canvas.
 		 */
 		core : {
 			wordIndex:0,
@@ -67,7 +67,7 @@
 		//-------------------------------------------------
 
 
-	    	/* 
+	    /* 
 	 	 * PIXI : Renderer.
 	 	 */ 
 		renderer: null,
