@@ -7,7 +7,7 @@
 			factory( global, true ) :
 			function( w ) {
 				if ( !w.document ) {
-					throw new Error( "jQuery requires a window with a document" );
+					throw new Error( "PWord requires a window with a document" );
 				}
 				return factory( w );
 			};
@@ -39,43 +39,7 @@
 		/*
 		 * Set constructors.
 		 */
-		constructor: PWord,
-
-		/*
-		 * Contains all the resources/elements that will be animated in
-		 * the canvas.
-		 *
-		 *  > wordIndex 	: Index of the current word displayed.
-		 *  > currentWord 	: Current displayed word in the canvas.
-		 *  > wordList     	: List of words that will be displayed.
-		 *  > particles
-		 *	> Fake     	: Particles that are only floating in the background.
-		 *     	> Real     	: Particles the form the word when the user hovers
-		 *                        the canvas.
-		 */
-		core : {
-			wordIndex:0,
-		 	currentWord: null,
-		 	wordList : [],
-		 	particles: {
-		  		fake: [],
-		  		real: []
-		 	}
-		},
-
-
-		//-------------------------------------------------
-
-
-	    	/* 
-	 	 * PIXI : Renderer.
-	 	 */ 
-		renderer: null,
-
-		/*
-	 	 * Root container that will hold all the elements to be drawn.
-	 	 */
-	 	stage: new PIXI.Container(),
+		constructor: PWord
 	}
 
 	window.PWord = PWord;

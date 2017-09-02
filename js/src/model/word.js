@@ -17,7 +17,7 @@ PWord.fn.Word = function( str, color ){
  */
 PWord.fn.Word.prototype.buildLetters = function(){
 	var letters = this.word.split("");
-	for (var i = 0; i < letters.length; i++) {
+	for (var i = 0; i < letters.length; i++)
 		letters[i] = new PWord.fn.Letter( letters[i].toLowerCase(), this.color );
 	return letters;
 };

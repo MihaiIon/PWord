@@ -3,44 +3,50 @@
  */
 PWord.fn.Letter = function( char ){
 	if (/^[a-z0-9. ]$/.test(char)) {
-		this.character = char;
+		this.char = char;
 		this.matrix = this.buildMatrix( char );
 	} else throw new Error("Unsupported character '"+char+"'.");
 };
 
 PWord.fn.Letter.prototype.buildMatrix = function( char ){
 	switch(char){
-		case ' ': return [ 0, 0, 0, 0, 0, 
+		case ' ': return 
+				 [ 0, 0, 0, 0, 0, 
 				   0, 0, 0, 0, 0,
 				   0, 0, 0, 0, 0,
 				   0, 0, 0, 0, 0,
 				   0, 0, 0, 0, 0  ];
 
- 		case '.': return [ 0, 0, 0, 0, 0, 
+ 		case '.': return 
+ 				 [ 0, 0, 0, 0, 0, 
 				   0, 0, 0, 0, 0,
 				   0, 0, 0, 0, 0,
 				   0, 1, 1, 0, 0,
 				   0, 1, 1, 0, 0  ];
  
- 		case 'a': return [ 1, 1, 1, 1, 1, 
+ 		case 'a': return 
+ 				 [ 1, 1, 1, 1, 1, 
 				   1, 0, 0, 0, 1,
 				   1, 1, 1, 1, 1,
 				   1, 0, 0, 0, 1,
 				   1, 0, 0, 0, 1  ];
 
-		case 'b': return [ 1, 1, 1, 1, 0, 
+		case 'b': return 
+				 [ 1, 1, 1, 1, 0, 
 				   1, 0, 0, 1, 0,
 				   1, 1, 1, 1, 1,
 				   1, 0, 0, 0, 1,
 				   1, 1, 1, 1, 1  ];
 
-		case 'c': return [ 1, 1, 1, 1, 1, 
+		case 'c': return 
+				 [ 1, 1, 1, 1, 1, 
 				   1, 0, 0, 0, 0,
 				   1, 0, 0, 0, 0,
 				   1, 0, 0, 0, 0,
 				   1, 1, 1, 1, 1  ];
 
-		case 'd': return [ 1, 1, 1, 1, 0, 
+		case 'd': return 
+				 [ 1, 1, 1, 1, 0, 
 				   1, 0, 0, 0, 1,
 				   1, 0, 0, 0, 1,
 				   1, 0, 0, 0, 1,

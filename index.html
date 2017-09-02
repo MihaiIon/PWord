@@ -13,22 +13,35 @@
   <script type="text/javascript" src="js/lib/jquery.js"></script>
   <script type="text/javascript" src="js/lib/pixi.js"></script>
   <script type="text/javascript" src="js/src/core.js"></script>
+  <script type="text/javascript" src="js/src/helpers.js"></script>
+  <script type="text/javascript" src="js/src/effect/size.js"></script>
+  <script type="text/javascript" src="js/src/effect/opacity.js"></script>
+  <script type="text/javascript" src="js/src/effect/color.js"></script>
+  <script type="text/javascript" src="js/src/effect/bump.js"></script>
+  <script type="text/javascript" src="js/src/core/setState.js"></script>
+  <script type="text/javascript" src="js/src/core/setWord.js"></script>
   <script type="text/javascript" src="js/src/core/setWordList.js"></script>
-  <script type="text/javascript" src="js/src/core/DOMElement.js"></script>
   <script type="text/javascript" src="js/src/core/resize.js"></script>
   <script type="text/javascript" src="js/src/core/init.js"></script>
+  <script type="text/javascript" src="js/src/anim/setupCanvas.js"></script>
+  <script type="text/javascript" src="js/src/anim/next.js"></script>
+  <script type="text/javascript" src="js/src/anim/previous.js"></script>
+  <script type="text/javascript" src="js/src/anim/animate.js"></script>
+  <script type="text/javascript" src="js/src/anim/start.js"></script>
+  <script type="text/javascript" src="js/src/model/effectStack.js"></script>
+  <script type="text/javascript" src="js/src/model/gravityPoint.js"></script>
   <script type="text/javascript" src="js/src/model/particle.js"></script>
   <script type="text/javascript" src="js/src/model/letter.js"></script>
   <script type="text/javascript" src="js/src/model/word.js"></script>
+  <script type="text/javascript" src="js/src/model/scene.js"></script>
   
   
   <script type="text/javascript" src="js/src/animate.js"></script>
   <script type="text/javascript">
-   $( document ).ready(function(){
-    /*var pword = new PWord();
-    pword.appendTo('#canvas');
-    pword.load();*/
-   });
+    var test;
+    $( document ).ready(function(){
+      test = new PWord("#pword-container");
+    });
   </script>
 
 </head>
@@ -41,16 +54,12 @@
     <!-- Canvas -->
     <div class="section">
         <div class="inner">
-          <div id="canvas-container">
+          <div id="pword-container">
             <div id="particles-controller"></div>
-            <canvas id="canvas"></canvas>
+            
           </div>
         </div>
     </div>
-
-    <div class="section">some text</div>
-    <div class="section">some text</div>
-    <div class="section">some text</div>
   </div>
 </body>
 </html>
