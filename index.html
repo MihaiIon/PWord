@@ -9,39 +9,13 @@
   
 
   <!-- Scripts -->
-  
-  <script type="text/javascript" src="js/lib/jquery.js"></script>
-  <script type="text/javascript" src="js/lib/pixi.js"></script>
-  <script type="text/javascript" src="js/src/core.js"></script>
-  <script type="text/javascript" src="js/src/helpers.js"></script>
-  <script type="text/javascript" src="js/src/effect/size.js"></script>
-  <script type="text/javascript" src="js/src/effect/opacity.js"></script>
-  <script type="text/javascript" src="js/src/effect/color.js"></script>
-  <script type="text/javascript" src="js/src/effect/bump.js"></script>
-  <script type="text/javascript" src="js/src/core/setState.js"></script>
-  <script type="text/javascript" src="js/src/core/setWord.js"></script>
-  <script type="text/javascript" src="js/src/core/setWordList.js"></script>
-  <script type="text/javascript" src="js/src/core/resize.js"></script>
-  <script type="text/javascript" src="js/src/core/init.js"></script>
-  <script type="text/javascript" src="js/src/anim/setupCanvas.js"></script>
-  <script type="text/javascript" src="js/src/anim/next.js"></script>
-  <script type="text/javascript" src="js/src/anim/previous.js"></script>
-  <script type="text/javascript" src="js/src/anim/animate.js"></script>
-  <script type="text/javascript" src="js/src/anim/start.js"></script>
-  <script type="text/javascript" src="js/src/model/effectStack.js"></script>
-  <script type="text/javascript" src="js/src/model/gravityPoint.js"></script>
-  <script type="text/javascript" src="js/src/model/particle.js"></script>
-  <script type="text/javascript" src="js/src/model/letter.js"></script>
-  <script type="text/javascript" src="js/src/model/word.js"></script>
-  <script type="text/javascript" src="js/src/model/scene.js"></script>
-  
-  
-  <script type="text/javascript" src="js/src/animate.js"></script>
+  <script type="text/javascript" src="js/lib/pixi.js"></script>  
+  <script data-main="js/app" src="js/lib/require.js"></script>
   <script type="text/javascript">
     var test;
-    $( document ).ready(function(){
+    window.onload = function(){
       test = new PWord("#pword-container");
-    });
+    };
   </script>
 
 </head>

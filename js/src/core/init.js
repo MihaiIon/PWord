@@ -13,10 +13,6 @@ PWord.fn.init = function( selector, list, opts ){
 	 *  > wordIndex 	: Index of the current word displayed.
 	 *  > currentWord 	: Current displayed word in the canvas.
 	 *  > wordList     	: List of words that will be displayed.
-	 *  > particles
-	 *		> Fake     	: Particles that are only floating in the background.
-	 *     	> Real     	: Particles the form the word when the user hovers
-	 *                        the canvas.
 	 */
 	this.core = {
 		wordIndex: null,
@@ -24,38 +20,35 @@ PWord.fn.init = function( selector, list, opts ){
 	 	wordList : []
 	};
 
-	/*
-	 *
+	/* 
+	 * If no words are specified, a default list will be 
+	 * provided as argument.
 	 */
-	this.particles = {
-  		fake: [],
-  		real: []
-	};
-
-	// If no words are specified, a default list will be 
-	// provided as argument.
 	this.setWordList( list ? list : [
-		{ word:"Creative" },
-		{ word:"Genius", color:"red" },
-		{ word:"Ninja" },
-		{ word:"OMG" },
-		{ word:"Fabulous" }
+		{ word:"Creative", color:"3fa8ce" },
+		{ word:"Genius", color:"3ece97" },
+		{ word:"Ninja", color:"cb6de0" },
+		{ word:"OMG", color:"ef8839" },
+		{ word:"Fabulous", color:"d63359" }
 	]);
 
 
 	/*
 	 * Initialize the PIXI canvas and append's it to the designated 
-	 * container ( if the selector is valid ).
+	 * container ( if the selector is valid, else throw error ).
 	 *
 	 */
 	var rquickExpr = /^#([\w-]+)$/,	// A simple way to check for HTML ids
 		match, elem;
 
-	if ( !selector || !rquickExpr.test(selector)) // HANDLE: $(""), $(null), $(undefined), $(false)
+
+	// HANDLE: $(""), $(null), $(undefined), $(false)
+	if ( !selector || !rquickExpr.test(selector)) 
 	{ 
 		throw new Error("The provided selector -"+selector+"- is malformed. Provide a valid id.");
 	}
 
+	// Init PIXI engine ( Scene )
 	this.scene = new PWord.fn.Scene( selector, opts 
 		? opts 
 		: { 
@@ -67,4 +60,6 @@ PWord.fn.init = function( selector, list, opts ){
 			maxSpreadDistance: 50  	// ----------maximal------------------.
 		}
 	).init();
+
+	return this;
 };

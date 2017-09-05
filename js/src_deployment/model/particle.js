@@ -1,6 +1,0 @@
-/*
- *
- */
-PWord.fn.Particle = function(){
-
-};

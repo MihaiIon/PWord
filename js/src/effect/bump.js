@@ -1,45 +1,54 @@
-/*
- * The size of the particle grows and go back to normal.
- */
-PWord.prototype.FX.bump = function( value, step ){	
-	return {
+define( [ 
+	"model/particle",
+	"effects" 
+], function( Particle, FX ) {
+	
+	/*
+	 * The size of the particle grows and go back to normal.
+	 */
+	return function( value, step ){	
+		return {
 
-		data: {
-			size: {
-				step: step ? step : 0.8,
-				targetValue: value ? value : Particle.DEFAULT_SIZE*1.8
+			data: {
+				size: {
+					step: step ? step : 0.8,
+					targetValue: value ? value : Particle.DEFAULT_SIZE*1.8
+				},
+				saved: {
+					size: null
+				},
+				isGrowing: true,
+				done: false
 			},
-			saved: {
-				size: null
-			},
-			isGrowing: true,
-			done: false
-		},
 
-		func: function( particle, fx ){
+			func: function( particle, effect ){
 
-			// Save the current size of the particle.
-			if (!fx.data.saved.size) fx.data.saved.size = particle.size;
+				var _data = effect.data;
 
-			//
-			if(PWord.fn.FX.size_FUNC( particle, fx.data.size )) 
-			{
-				if (fx.data.isGrowing) 
+				// Save the current size of the particle.
+				if (!_data.saved.size) _data.saved.size = particle.size;
+
+				//
+				if(FX.size_FUNC( particle, _data.size )) 
 				{
-					fx.data.isGrowing = false;
-					fx.data.size.targetValue = fx.data.saved.size;
+					if (_data.isGrowing) 
+					{
+						_data.isGrowing = false;
+						_data.size.targetValue = _data.saved.size;
+					}
+					
+					else _data.done = true;
 				}
-				
-				else fx.data.done = true;
-			}
 
-			// 
-			if( !fx.data.done ) {
-				particle.eStack.continue({ 
-					data: fx.data, 
-					func: fx.func 
-				});
+				// 
+				if( !_data.done ) {
+					particle.eStack.continue({ 
+						data: _data, 
+						func: effect.func 
+					});
+				}
 			}
 		}
-	}
-};
+	};
+
+} );

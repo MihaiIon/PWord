@@ -1,46 +1,30 @@
-(function( global, factory ) {
+define( [
+	"./var/document",
+	"./model/scene"
+], function( document, Scene ) {
 
-	"use strict";
+"use strict";
 
-	if ( typeof module === "object" && typeof module.exports === "object" ) {
-		module.exports = global.document ?
-			factory( global, true ) :
-			function( w ) {
-				if ( !w.document ) {
-					throw new Error( "PWord requires a window with a document" );
-				}
-				return factory( w );
-			};
-	} else {
-		factory( global );
-	}
+var 
+	version = "1.0",
 
-// Pass this if window is not defined yet
-})( typeof window !== "undefined" ? window : this, function(window, noGlobal) {
-
-	"use strict";
-
-	var
-		version = "@VERSION",
-
-		// Define a local copy of PWord
-		PWord = function( selector, wordList, options ) {
-			PWord.fn.init( selector, wordList, options );
-		}
+	// Define a local copy of Pword
+	Pword = function( selector, words, opt ) {
+		return new Pword.fn.init( selector, words, opt );
+	};
 
 
-	PWord.fn = PWord.prototype = {
+Pword.fn = Pword.prototype = {
 
-		/*
-		 * The current version of PWord being used
-		 */
-		pword: version,
+	constructor: Pword,
 
-		/*
-		 * Set constructors.
-		 */
-		constructor: PWord
-	}
+	// constructors 
+	scene: new Scene(),
 
-	window.PWord = PWord;
+
+};
+
+
+window.Pword = Pword;
+
 });
