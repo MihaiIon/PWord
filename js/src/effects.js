@@ -1,13 +1,13 @@
 define( [
-	/*"effect/size",
-	"effect/opacity",*/
-	"effect/bump"/*,
-	"effect/colorBump"*/
-], function( size, opacity, bump, colorBump ){
+	'effect/changeSize',
+	'effect/changeOpacity',
+	'effect/changeColor',
+	'effect/bump'
+], function( size, opacity, color, bump ){
 	return {
-		size: size,
-		opacity: opacity,
-		bump: bump,
-		colorBump: colorBump
+		changeSize: size,
+		changeOpacity: opacity,
+		changeColor: color,
+		bump: bump
 	};
 } );

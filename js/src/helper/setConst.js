@@ -1,5 +1,5 @@
 define( function(){
-	return function() {
-		
+	return function( prop, val ) {
+		Object.defineProperty( proto, prop, { value : val });
 	};
 } );

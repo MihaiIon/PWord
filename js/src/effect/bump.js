@@ -1,4 +1,8 @@
-define( [ 
+define( function(){
+	return function() {
+		
+	};
+} );define( [ 
 	"model/particle",
 	"effects" 
 ], function( Particle, FX ) {

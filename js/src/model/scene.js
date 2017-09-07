@@ -1,11 +1,12 @@
 define( [
 	"pixi",
+	"./var/document",
 	"scene/init",
 	"scene/append",
 	"scene/setConstants",
 	"scene/generateFakeParticles",
 	"scene/animate"
-], function( PIXI, init, append, setConstants, generateFakeParticles, animate ) {
+], function( PIXI, document,  init, append, setConstants, generateFakeParticles, animate ) {
 
 "use strict";
 
@@ -22,7 +23,6 @@ var Scene = function( selector, opts ) {
 	// Keeping track of the center is essential to
 	// center it's content.
 	this.center = new PIXI.Point(this.dimens.width/2, this.dimens.height/2);
-
 
 	// The PIXI engine.
 	this.app = new PIXI.Application(

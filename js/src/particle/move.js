@@ -1,7 +1,7 @@
 define( [
 	"model/Particle"
 ], function( Particle ){
-	return function() {
+	return function( delta ) {
 		if (this.isMoving && !this.fxLock) 
 		{
 			// Move in orbit around the gravity point.
