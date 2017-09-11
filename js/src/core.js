@@ -144,8 +144,8 @@ Pword.fn = Pword.prototype = {
 		helper.SET_CONST(Scene, "Particle", Particle)
 
 		var _min = 2*Particle.MAX_GPOINT_RADIUS,
-			_maxX = this.scene.dimens.width - 6*Particle.MAX_GPOINT_RADIUS,
-			_maxY = this.scene.dimens.height - 4*Particle.MAX_GPOINT_RADIUS;
+			_maxX = this.scene.dimens.width - 2*Particle.MAX_GPOINT_RADIUS,
+			_maxY = this.scene.dimens.height - 2*Particle.MAX_GPOINT_RADIUS;
 
 		helper.SET_CONST(Scene, "SAFE_ZONE_X_AXIS", { min: _min, max: _maxX });
 		helper.SET_CONST(Scene, "SAFE_ZONE_Y_AXIS", { min: _min, max: _maxY });
