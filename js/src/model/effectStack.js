@@ -8,25 +8,23 @@ var EffectStack = function() {
 	this.queued = [];
 }
 
-EffectStack.prototype.length = function() {
-    return this.stack.length;
-};
-
-EffectStack.prototype.push = function( fx ) {
-	this.stack.push( fx );
-};
-
-EffectStack.prototype.pop = function( fx ) {
-	return this.stack.pop( fx );
-};
-
-EffectStack.prototype.update = function() {
-	this.stack = this.queued;
-	this.queued = [];
-};
-
-EffectStack.prototype.continue = function( fx ) {
-	this.queued.push( fx );
+EffectStack.prototype = {
+	length: function() {
+    	return this.stack.length;
+	},
+	push: function( fx ) {
+		this.stack.push( fx );
+	},
+	pop: function( fx ) {
+		return this.stack.pop( fx );
+	},
+	update: function() {
+		this.stack = this.queued;
+		this.queued = [];
+	},
+	continue: function( fx ) {
+		this.queued.push( fx );
+	}
 };
 
 return EffectStack;
