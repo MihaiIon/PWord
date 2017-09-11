@@ -2,7 +2,6 @@ define( function() {
 	return function() {
 
 		// Setup
-		this.setConstants();
 		this.append();
 
 		// Animation function

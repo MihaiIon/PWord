@@ -8,7 +8,7 @@ define( [
  * Basically the <particle> moves in orbit around the <GravityPoint>. 
  */
 return function( particle ) {
-
+console.log(particle.constructor.DEFAULT_SIZE)
 	// Random radius.
 	this.radius = helper.rand(
 		particle.constructor.MIN_GPOINT_RADIUS,

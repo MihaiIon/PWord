@@ -1,7 +1,9 @@
-define( [
-	"model/Particle"
-], function( Particle ){
+define( function(){
 	return function( delta ) {
+
+		// Alias 
+		var Particle = this.constructor;
+
 		if (this.isMoving && !this.fxLock) 
 		{
 			// Move in orbit around the gravity point.

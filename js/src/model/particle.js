@@ -1,13 +1,14 @@
 define( [
 	"pixi",
+	"helper",
 	"./effectStack",
 	"particle/addEffect",
 	"particle/consumeEffects",
 	"particle/getColor",
 	"particle/float",
 	"particle/retract",
-	"particle/move",
-], function( PIXI, EffectStack, addEffect, consumeEffects, getColor, float, retract, move ) {
+	"particle/move"
+], function( PIXI, helper, EffectStack, addEffect, consumeEffects, getColor, float, retract, move ) {
 
 "use strict";
 
@@ -17,8 +18,7 @@ var Particle = function( x, y, color, size, opacity ) {
 	this.size = size ? size : Particle.DEFAULT_SIZE;
 	this.color = color ? color : Particle.COLORS.BLACK;
 	this.opacity = opacity ? opacity : 1;
-	this.speed = Particle.MIN_SPEED 
-		+ Math.random()*Particle.SPEED_DELTA;
+	this.speed = helper.rand( Particle.MIN_SPEED, Particle.SPEED_DELTA + Particle.MIN_SPEED );
 	
 	// Gravity Point
 	this.gPoint = null;
@@ -38,7 +38,7 @@ Particle.prototype = {
 	getColor: getColor,
 	float: float,
 	retract: retract,
-	move: move,
+	move: move
 }
 
 return Particle;

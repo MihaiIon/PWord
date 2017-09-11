@@ -3,17 +3,16 @@ define( [
 	"var/document",
 	"scene/init",
 	"scene/append",
-	"scene/setConstants",
 	"scene/generateFakeParticles",
 	"scene/animate"
-], function( PIXI, document, init, append, setConstants, genFP, animate ) {
+], function( PIXI, document, init, append, genFP, animate ) {
 
 "use strict";
 
 var Scene = function( selector, opts ) {
 
 	// The container that will contain the scene.
-	this.container = document.getElementById(selector.substring(1));
+	this.container = document.getElementById( selector.substring(1) );
 
 	// 
 	this.options = opts;
@@ -52,7 +51,6 @@ Scene.prototype = {
 	constructor: Scene,
 	init: init,
 	append: append,
-	setConstants: setConstants,
 	generateFakeParticles: genFP,
 	animate: animate,
 }
