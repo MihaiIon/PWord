@@ -119,7 +119,7 @@ Pword.fn = Pword.prototype = {
 		//----------------------------
 
 		helper.SET_CONST(Particle, "DEFAULT_SIZE", options.size);
-		console.log(Particle.DEFAULT_SIZE)
+		
 		helper.SET_CONST(Particle, "MIN_SPEED", options.minSpeed);
 		helper.SET_CONST(Particle, "MAX_SPEED", options.maxSpeed);
 		helper.SET_CONST(Particle, "SPEED_DELTA", Particle.MAX_SPEED-Particle.MIN_SPEED);
