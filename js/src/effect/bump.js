@@ -10,13 +10,13 @@ define( function(){
 	/*
 	 * The size of the particle grows and go back to normal.
 	 */
-	return function( value, step ){	
+	return function( args ){	
 		return {
 
 			data: {
 				size: {
-					step: step ? step : 0.8,
-					targetValue: value ? value : Particle.DEFAULT_SIZE*1.8
+					step: args && args.step ? args.step : 0.8,
+					targetValue: args && args.value ? args.value : Particle.DEFAULT_SIZE*1.8
 				},
 				saved: {
 					size: null

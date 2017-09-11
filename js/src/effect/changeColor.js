@@ -6,12 +6,12 @@ define( [
 	/*
 	 * Changes the color of a Particle.
 	 */
-	return function( value, step ) {
+	return function( args ) {
 		return {
 			data: {
-				step: step ? step : helper.rand(2, 10, true),
-				targetValue: value 
-					? value 
+				step: args && args.step ? args.step : helper.rand(2, 10, true),
+				targetValue: args && args.value 
+					? args.value 
 					: {
 						r: helper.rand(0, 255, true),
 						g: helper.rand(0, 255, true),

@@ -2,13 +2,13 @@ define( [
 	"helper",
 	"./base/opacity_func" 
 ], function( helper, opacity_func ) {
-	return function( value, step ) {
+	return function( args ) {
 		return {
 
 			// Basic information on the effect's goal.
 			data: {
-				step: step ? step : helper.rand( 0.04, 0.1 ),
-				targetValue: value ? value : helper.rand( 0.2, 0.9 )
+				step: args && args.step ? args.step : helper.rand( 0.04, 0.1 ),
+				targetValue: args && args.value ? args.value : helper.rand( 0.2, 0.9 )
 			},
 
 			// The core of the effect.

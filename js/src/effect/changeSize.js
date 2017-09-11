@@ -6,11 +6,11 @@ define( [
 	/**
 	 * Change size to the specified <value> and <step>. 
 	 */
-	return function( value, step ) {
+	return function( args ) {
 		return {
 			data: {
-				step: step ? step : helper.rand( 0.2, 0.6 ),
-				targetValue: value ? value : helper.rand( 10, 20 )
+				step: args && args.step ? args.step : helper.rand( 0.2, 0.6 ),
+				targetValue: args && args.value ? args.value : helper.rand( 10, 20 )
 			},
 
 			func: function( particle, fx ){

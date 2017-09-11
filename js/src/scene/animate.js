@@ -16,6 +16,9 @@ define( [
 			// Draw MAIN particles.
 		    for (var i = 0; i < _pM.length; i++) 
 		    {
+		    	//
+		    	_pM[i].consumeEffects();
+		    	 
 		    	// Draw Particle.
 				_g.beginFill("0x"+_pM[i].color, 1);
 				_g.fillAlpha = _pM[i].opacity;
@@ -28,12 +31,14 @@ define( [
 
 				// Move Particle
 				_pM[i].move(delta);
-				_pM[i].consumeEffects();
 			}
 
 			// Draw DECO particles.
 		    for (var i = 0; i < _pF.length; i++) 
 		    {
+		    	// 
+		    	_pF[i].consumeEffects();
+
 		    	// Draw Particle.
 				_g.beginFill("0x"+_pF[i].color, 1);
 				_g.fillAlpha = _pF[i].opacity;
@@ -46,7 +51,7 @@ define( [
 
 				// Move Particle
 				_pF[i].move(delta);
-				_pF[i].consumeEffects();
+				
 			}
 
 			// Print the graphics on the canvas.
