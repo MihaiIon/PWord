@@ -1,7 +1,26 @@
-define( [
-	"model/particle"
-], function( Particle ){
+define( function(){
 	
+	function draw( g, p, d ) {
+		for (var i = 0; i < p.length; i++) 
+	    {
+	    	//
+	    	p[i].consumeEffects();
+	    	 
+	    	// Draw Particle.
+			g.beginFill("0x"+p[i].color, 1);
+			g.fillAlpha = p[i].opacity;
+			g.drawRect(
+				p[i].current.x - p[i].size/2, 
+				p[i].current.y - p[i].size/2, 
+				p[i].size, 
+				p[i].size
+			);
+
+			// Move Particle
+			p[i].move(d);
+		}
+	}
+
 	return function() {
 		var _this = this;
 		this.app.ticker.add(function( delta ){
@@ -13,47 +32,10 @@ define( [
 			// Clear the graphics.
 			_g.clear();
 
-			// Draw MAIN particles.
-		    for (var i = 0; i < _pM.length; i++) 
-		    {
-		    	//
-		    	_pM[i].consumeEffects();
-		    	 
-		    	// Draw Particle.
-				_g.beginFill("0x"+_pM[i].color, 1);
-				_g.fillAlpha = _pM[i].opacity;
-				_g.drawRect(
-					_pM[i].current.x - _pM[i].size/2, 
-					_pM[i].current.y - _pM[i].size/2, 
-					_pM[i].size, 
-					_pM[i].size
-				);
-
-				// Move Particle
-				_pM[i].move(delta);
-			}
-
-			// Draw DECO particles.
-		    for (var i = 0; i < _pF.length; i++) 
-		    {
-		    	// 
-		    	_pF[i].consumeEffects();
-
-		    	// Draw Particle.
-				_g.beginFill("0x"+_pF[i].color, 1);
-				_g.fillAlpha = _pF[i].opacity;
-				_g.drawRect(
-					_pF[i].current.x - _pF[i].size/2, 
-					_pF[i].current.y - _pF[i].size/2, 
-					_pF[i].size, 
-					_pF[i].size
-				);
-
-				// Move Particle
-				_pF[i].move(delta);
-				
-			}
-
+			// Draw particles.
+		    draw( _g, _pM, delta );
+			draw( _g, _pF, delta );
+		    
 			// Print the graphics on the canvas.
 			_this.app.stage.addChild(_g);
 		});
