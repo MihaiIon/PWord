@@ -1,13 +1,13 @@
 define( [
 	"pixi",
-	"model/effectStack",
+	"./effectStack",
 	"particle/addEffect",
 	"particle/consumeEffects",
 	"particle/getColor",
 	"particle/float",
 	"particle/retract",
 	"particle/move",
-], function( PIXI, EffectStack ) {
+], function( PIXI, EffectStack, addEffect, consumeEffects, getColor, float, retract, move ) {
 
 "use strict";
 
@@ -31,13 +31,15 @@ var Particle = function( x, y, color, size, opacity ) {
 	this.eStack = new EffectStack();
 };
 
-
-Particle.prototype.addEffect = addEffect;
-Particle.prototype.consumeEffects = consumeEffects;
-Particle.prototype.getColor = getColor;
-Particle.prototype.float = float;
-Particle.prototype.retract = retract;
-Particle.prototype.move = move;
+Particle.prototype = {
+	constructor: Particle,
+	addEffect:addEffect,
+	consumeEffects: consumeEffects,
+	getColor: getColor,
+	float: float,
+	retract: retract,
+	move: move,
+}
 
 return Particle;
 

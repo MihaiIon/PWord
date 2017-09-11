@@ -1,4 +1,4 @@
-(function(){
+define( function() {
 
 	/*
 	 *
@@ -229,6 +229,6 @@
 	 	}
 	};
 
-	PWord.fn.Letter = Letter;
+	return Letter;
 
-})();
+} );

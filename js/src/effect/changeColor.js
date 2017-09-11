@@ -1,6 +1,6 @@
 define( [ 
-	'./helper',
-	'base/color_func' 
+	"helper",
+	"./base/color_func" 
 ],  function( helper, size_func ){
 
 	/*
@@ -9,13 +9,13 @@ define( [
 	return function( value, step ) {
 		return {
 			data: {
-				step: step ? step : helper.rand(8) + 2,
+				step: step ? step : helper.rand(2, 10, true),
 				targetValue: value 
 					? value 
 					: {
-						r: helper.rand(255),
-						g: helper.rand(255),
-						b: helper.rand(255)
+						r: helper.rand(0, 255, true),
+						g: helper.rand(0, 255, true),
+						b: helper.rand(0, 255, true)
 				  	}
 			},
 

@@ -1,32 +1,34 @@
-(function(){
-	/**
-	 *
-	 */
-	var EffectStack = function() {
-		this.stack = [];
-		this.queued = [];
-	}
+define( function() {
 
-	EffectStack.prototype.length = function() {
-	    return this.stack.length;
-	};
+/**
+ *
+ */
+var EffectStack = function() {
+	this.stack = [];
+	this.queued = [];
+}
 
-	EffectStack.prototype.push = function( fx ) {
-		this.stack.push( fx );
-	};
+EffectStack.prototype.length = function() {
+    return this.stack.length;
+};
 
-	EffectStack.prototype.pop = function( fx ) {
-		return this.stack.pop( fx );
-	};
+EffectStack.prototype.push = function( fx ) {
+	this.stack.push( fx );
+};
 
-	EffectStack.prototype.update = function() {
-		this.stack = this.queued.slice(0);
-		this.queued = [];
-	};
+EffectStack.prototype.pop = function( fx ) {
+	return this.stack.pop( fx );
+};
 
-	EffectStack.prototype.continue = function( fx ) {
-		this.queued.push( fx );
-	};
+EffectStack.prototype.update = function() {
+	this.stack = this.queued;
+	this.queued = [];
+};
 
-	PWord.fn.EffectStack = EffectStack;
-})();
+EffectStack.prototype.continue = function( fx ) {
+	this.queued.push( fx );
+};
+
+return EffectStack;
+
+} );

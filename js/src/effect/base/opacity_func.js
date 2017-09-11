@@ -27,4 +27,4 @@ define( function(){
 			return true;
 		}
 	};
-};
+} );

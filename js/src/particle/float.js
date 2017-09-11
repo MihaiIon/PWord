@@ -1,7 +1,8 @@
 define( [ 
 	"model/gravityPoint",
-	"effects"
-], function( GravityPoint, FX ){
+	"effects",
+	"helper"
+], function( GravityPoint, FX, helper ){
 
 	/**
 	 * Creates a new gravity point around which the Particle
@@ -13,7 +14,8 @@ define( [
 		this.gPoint = new GravityPoint( this );
 		this.isMoving = true;
 		this.isFloating = true;
-		this.eStack.push( FX.changeSize() );
+		var _size = this.constructor.DEFAULT_SIZE;
+		this.eStack.push( FX.changeSize( helper.rand( _size/2, _size+_size/2 ) ) );
 		this.eStack.push( FX.changeOpacity() );
 		return this;
 	};

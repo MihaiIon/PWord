@@ -11,13 +11,13 @@
   <!-- Scripts -->
   <script type="text/javascript" src="js/lib/pixi.js"></script>  
   <script data-main="js/app" src="js/lib/require.js"></script>
-  <script type="text/javascript">
-    var test;
-    window.onload = function(){
-      test = new PWord("#pword-container");
-    };
+  <script type="text/javascript"> 
+    document.onload = function(){
+      var test = new Pword( "#pword-container" );
+      console.log(window.test);
+    }
+    
   </script>
-
 </head>
 <body>
   <header>

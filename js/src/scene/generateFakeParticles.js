@@ -1,14 +1,15 @@
 define( [
-	"model/particle"
-], function( Particle ){
+	"model/particle",
+	"helper"
+], function( Particle, helper ){
 	return function() {
-		for (var i = 0; i < Math.floor(Math.random()*10) + 8; i++) {
+		for (var i = 0; i < helper.rand(8, 20); i++) {
 			this.particles.fake.push(new Particle(
-				Scene.SAFE_ZONE_X_AXIS.max*Math.random() + Scene.SAFE_ZONE_X_AXIS.min,
-				Scene.SAFE_ZONE_Y_AXIS.max*Math.random() + Scene.SAFE_ZONE_Y_AXIS.min,
+				helper.rand( this.constructor.SAFE_ZONE_X_AXIS.min, this.constructor.SAFE_ZONE_X_AXIS.max ),
+				helper.rand( this.constructor.SAFE_ZONE_Y_AXIS.min, this.constructor.SAFE_ZONE_Y_AXIS.max ),
 				//this.word.color
 				"000000"
 			).float());
 		}
-	}
+	};
 } );

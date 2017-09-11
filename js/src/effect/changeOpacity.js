@@ -1,15 +1,18 @@
-define( [ 'base/opacity_func' ], function( opacity_func ) {
+define( [ 
+	"helper",
+	"./base/opacity_func" 
+], function( helper, opacity_func ) {
 	return function( value, step ) {
 		return {
 
 			// Basic information on the effect's goal.
 			data: {
-				step: step ? step : Math.random()*0.06 + 0.04,
-				targetValue: value ? value : Math.random()*0.7 + 0.2
+				step: step ? step : helper.rand( 0.04, 0.1 ),
+				targetValue: value ? value : helper.rand( 0.2, 0.9 )
 			},
 
 			// The core of the effect.
-			func: function( particle, fx ){
+			func: function( particle, fx ) {
 				if(!opacity_func( particle, fx.data )) {
 					particle.eStack.continue({ 
 						data: fx.data, 
@@ -20,8 +23,3 @@ define( [ 'base/opacity_func' ], function( opacity_func ) {
 		};
 	};
 } );
-
-
-PWord.prototype.FX.changeOpacity = function( value, step ){	
-
-};

@@ -1,12 +1,19 @@
+define( [
+	"pixi",
+	"helper"
+], function( PIXI, helper ) {
+
 /**
  * Each <GravityPoint> is associated with a particle (square). 
  * Basically the <particle> moves in orbit around the <GravityPoint>. 
  */
-PWord.fn.GravityPoint = function( particle ) {
+return function( particle ) {
 
 	// Random radius.
-	this.radius = PWord.fn.Particle.MIN_GPOINT_RADIUS 
-				+ Math.random()*PWord.fn.Particle.GPOINT_DELTA_RADIUS;
+	this.radius = helper.rand(
+		particle.constructor.MIN_GPOINT_RADIUS,
+		particle.constructor.GPOINT_DELTA_RADIUS
+	);
 
 	// Spinning direction.
 	this.direction = Math.random() > 0.5 ? 1 : -1;
@@ -22,3 +29,5 @@ PWord.fn.GravityPoint = function( particle ) {
 		particle.origin.y + this.radius * Math.sin(2*Math.PI - this.angle)
 	);
 };
+
+} );

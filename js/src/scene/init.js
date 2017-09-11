@@ -1,17 +1,13 @@
 define( function() {
+	return function() {
 
-	return function( opts ) {
-
-		// 
-		this.generateFakeParticles();
-
-		// Finalize the job.
-		this.setConstants( opts.particle ? opts.particle : {} );
+		// Setup
+		this.setConstants();
 		this.append();
 
 		// Animation function
+		this.generateFakeParticles();
 		this.animate();
-
 		return this;
 	}
 

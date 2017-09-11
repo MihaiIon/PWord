@@ -1,12 +1,12 @@
 define( [
 	"pixi",
-	"./var/document",
+	"var/document",
 	"scene/init",
 	"scene/append",
 	"scene/setConstants",
 	"scene/generateFakeParticles",
 	"scene/animate"
-], function( PIXI, document,  init, append, setConstants, generateFakeParticles, animate ) {
+], function( PIXI, document, init, append, setConstants, genFP, animate ) {
 
 "use strict";
 
@@ -15,14 +15,17 @@ var Scene = function( selector, opts ) {
 	// The container that will contain the scene.
 	this.container = document.getElementById(selector.substring(1));
 
+	// 
+	this.options = opts;
+
 	// Scene's Size
 	this.dimens = {};
-	this.dimens.width = opts.width ? opts.width : this.container.offsetWidth;
-	this.dimens.height = opts.height ? opts.width : this.container.offsetHeight;
+	this.dimens.width = this.container.offsetWidth;
+	this.dimens.height = this.container.offsetHeight;
 
 	// Keeping track of the center is essential to
 	// center it's content.
-	this.center = new PIXI.Point(this.dimens.width/2, this.dimens.height/2);
+	this.center = new PIXI.Point( this.dimens.width/2, this.dimens.height/2 );
 
 	// The PIXI engine.
 	this.app = new PIXI.Application(
@@ -45,11 +48,14 @@ var Scene = function( selector, opts ) {
 	};
 };
 
-Scene.prototype.init = init;
-Scene.prototype.append = append;
-Scene.prototype.setConstants = setConstants;
-Scene.prototype.generateFakeParticles = genFP;
-Scene.prototype.animate = animate;
+Scene.prototype = {
+	constructor: Scene,
+	init: init,
+	append: append,
+	setConstants: setConstants,
+	generateFakeParticles: genFP,
+	animate: animate,
+}
 
 return Scene;
 

@@ -1,13 +1,12 @@
 // Config
 requirejs.config({
-    baseUrl: 'js/src',
+    baseUrl: "js/src",
     paths: {
-    	pixi: '../lib/pixi',
+    	pixi: "../lib/pixi",
     }
 });
 
 // Load module
-requirejs(['core'], function( Pword ){
-	
-
-});
+requirejs( [ "core" ], function( Pword ) {
+	window.test = new Pword( "#pword-container" );
+} );
