@@ -5,5 +5,4 @@ define( function() {
 		this.animate();
 		return this;
 	}
-
 } );
