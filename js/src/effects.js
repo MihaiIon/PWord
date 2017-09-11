@@ -3,13 +3,15 @@ define( [
 	"effect/changeOpacity",
 	"effect/changeColor",
 	"effect/bump",
-	"effect/fadeIn"
-], function( size, opacity, color, bump, fadeIn ){
+	"effect/fadeIn",
+	"effect/fadeOut"
+], function( size, opacity, color, bump, fadeIn, fadeOut ) {
 	return {
 		changeSize: size,
 		changeOpacity: opacity,
 		changeColor: color,
 		bump: bump,
-		fadeIn: fadeIn
+		fadeIn: fadeIn,
+		fadeOut: fadeOut
 	};
 } );
