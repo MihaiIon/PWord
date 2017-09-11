@@ -1,10 +1,9 @@
 define( [
-	"./var/document",
 	"./model/scene",
 	"./model/Particle",
 	"./model/word",
 	"./helper"
-], function( document, Scene, Particle, Word, helper ) {
+], function( Scene, Particle, Word, helper ) {
 
 "use strict";
 
