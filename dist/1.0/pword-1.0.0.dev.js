@@ -182,6 +182,256 @@ Pword.fn = Pword.prototype = {
 
 
 //--------------------------------------------------------------------
+// Letter and Word
+//--------------------------------------------------------------------
+
+var
+	Word = function( str, color ){
+
+		this.string = str;
+
+		// Simple way to test if a color is valid.
+		this.color = color && /^#(?:[a-z0-9]{3}){1,2}$/.test( color ) ? color : "000000";
+
+		// Array of characters / symbols.
+		this.letters = this.buildLetters();
+	},
+	
+	Letter = function( char ) {
+		if (/^[a-z0-9. ]$/.test(char)) {
+			this.char = char;
+			this.matrix = this.buildMatrix( char );
+		} else throw new Error("Unsupported character '"+char+"'.");
+	};
+
+Word.prototype.buildLetters = function(){
+	var _ls = this.string.split("");
+	for (var i = 0; i < _ls.length; i++)
+		_ls[i] = new Letter( _ls[i].toLowerCase(), this.color );
+	return _ls;
+};
+
+Letter.prototype.buildMatrix = function( char ){
+	switch(char){
+		case ' ': return [ 0, 0, 0, 0, 0, 
+				   0, 0, 0, 0, 0,
+				   0, 0, 0, 0, 0,
+				   0, 0, 0, 0, 0,
+				   0, 0, 0, 0, 0  ];
+
+ 		case '.': return [ 0, 0, 0, 0, 0, 
+				   0, 0, 0, 0, 0,
+				   0, 0, 0, 0, 0,
+				   0, 1, 1, 0, 0,
+				   0, 1, 1, 0, 0  ];
+ 
+ 		case 'a': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1  ];
+
+		case 'b': return [ 1, 1, 1, 1, 0, 
+				   1, 0, 0, 1, 0,
+				   1, 1, 1, 1, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case 'c': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 0, 0, 0, 0,
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1  ];
+
+		case 'd': return [ 1, 1, 1, 1, 0, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 0  ];
+
+		case 'e': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 0, 0, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1  ];
+
+		case 'f': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 0, 0, 
+				   1, 0, 0, 0, 0,
+				   1, 0, 0, 0, 0  ];
+
+		case 'g': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 0, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case 'h': return [ 1, 0, 0, 0, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1  ];				   
+
+	   	case 'i': return [ 0, 0, 1, 0, 0, 
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0, 
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0  ];
+
+		case 'j': return [ 0, 0, 0, 0, 1, 
+				   0, 0, 0, 0, 1,
+				   0, 0, 0, 0, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case 'k': return [ 1, 0, 0, 1, 0, 
+				   1, 0, 0, 1, 0,
+				   1, 0, 0, 1, 0, 
+				   1, 1, 1, 1, 0,
+				   1, 0, 0, 0, 1  ];
+
+		case 'l': return [ 1, 0, 0, 0, 0, 
+				   1, 0, 0, 0, 0,
+				   1, 0, 0, 0, 0, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1  ];
+
+		case 'm': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 1, 0, 1,
+				   1, 0, 1, 0, 1, 
+				   1, 0, 1, 0, 1,
+				   1, 0, 1, 0, 1  ];
+
+		case 'n': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1  ];
+
+		case '0':
+		case 'o': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case 'p': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   1, 0, 0, 0, 0,
+				   1, 0, 0, 0, 0  ];
+
+		case 'q': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 1, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+	   	case 'r': return [ 1, 1, 1, 1, 0,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 0, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1 ];
+
+		case '5':
+		case 's': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+	   	
+	   	case 't': return [ 1, 1, 1, 1, 1,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0  ];
+
+		case 'u': return [ 1, 0, 0, 0, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+	   	
+	   	case 'v': return [ 1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   0, 1, 0, 1, 0,
+				   0, 1, 0, 1, 0,
+				   0, 0, 1, 0, 0 ];
+
+		case 'w': return [ 1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 0, 1, 0, 1,
+				   1, 0, 1, 0, 1,
+				   1, 1, 1, 1, 1 ];
+
+		case 'x': return [ 1, 1, 0, 1, 1,
+				   0, 1, 1, 1, 0,
+				   0, 0, 1, 0, 0,
+				   0, 1, 1, 1, 0,
+				   1, 1, 0, 1, 1 ];
+
+		case 'y': return [ 1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0 ];
+
+		case '2':
+		case 'z': return [ 1, 1, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1 ];
+
+		case '1': return [ 0, 1, 1, 0, 0,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0,
+				   0, 0, 1, 0, 0 ];
+
+		case '3': return [ 1, 1, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   0, 0, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1 ];
+
+		case '4': return [ 1, 0, 0, 0, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   0, 0, 0, 0, 1 ];
+
+		case '6': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 0,
+				   1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case '7': return [ 1, 1, 1, 1, 1, 
+				   0, 0, 0, 0, 1,
+				   0, 0, 0, 0, 1,
+				   0, 0, 0, 0, 1,
+				   0, 0, 0, 0, 1  ];
+
+		case '8': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		case '9': return [ 1, 1, 1, 1, 1, 
+				   1, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1,
+				   0, 0, 0, 0, 1,
+				   1, 1, 1, 1, 1  ];
+
+		default: return [];
+ 	}
+};
+
+
+//--------------------------------------------------------------------
 // Scene
 //--------------------------------------------------------------------
 
@@ -322,6 +572,29 @@ var
 	EffectStack = function() {
 		this.stack = [];
 		this.queued = [];
+	},
+
+	GravityPoint = function( particle ) {
+	
+		// Random radius.
+		this.radius = helper.rand(
+			particle.constructor.MIN_GPOINT_RADIUS,
+			particle.constructor.GPOINT_DELTA_RADIUS
+		);
+
+		// Spinning direction.
+		this.direction = Math.random() > 0.5 ? 1 : -1;
+		
+		// Pick a random angle (in rads) to generate the <GravityPoint>'s center. 
+		this.angle = Math.random() * 2 * Math.PI;
+		
+		// The center is calculated from the <particle>'s origin position.
+		// That way, the <particle> can immediately orbit around the <GravityPoint>'s center
+		// when it starts floating.
+		this.origin = new PIXI.Point (
+			particle.origin.x + this.radius * Math.cos(2*Math.PI - this.angle),
+			particle.origin.y + this.radius * Math.sin(2*Math.PI - this.angle)
+		);
 	};
 
 Particle.prototype = {
@@ -435,7 +708,200 @@ EffectStack.prototype = {
 };
 
 
+//--------------------------------------------------------------------
+// Effects
+//--------------------------------------------------------------------
+
+var 
+	FX = {
+		base: {
+			size_func: function( particle, data ) {
+
+				// Distance to targetValue.
+				var _delta = (particle.size - data.targetValue);
+
+				// If the particle still validates the conditions,
+				// continue the effect till it's done.
+				if ((particle.isFloating || particle.isMoving) && Math.abs(_delta) > 2) 
+				{
+					particle.size += data.step * (_delta > 0 ? -1 : 1);
+					return false;
+				} 
+
+				//
+				else 
+				{
+					particle.size = data.targetValue;
+					return true;
+				}
+			},
+			opacity_func: function( particle, data ) {	
+				
+				// Distance to targetValue.
+				var _delta = (particle.opacity - data.targetValue);
+
+				// If the particle still validates the conditions,
+				// continue the effect till it's done.
+				if ((particle.isFloating || particle.isMoving) && Math.abs(_delta) > 0.1) 
+				{
+					particle.opacity += data.step * (_delta > 0 ? -1 : 1);
+					return false;	
+				} 
+
+				//
+				else 
+				{
+					particle.opacity = data.targetValue;
+					return true;
+				}
+			},
+			color_func: function( particle, data ) {
+					
+				var _c = particle.color,
+				    _t = data.targetValue;
+
+				if (_c.r != _t.r || _c.g != _t.g || _c.b != _t.b) 
+				{
+					// 
+					var helper = function( delta, value, step, targetValue ) {
+						if (Math.abs(delta) < 10) return targetValue;
+						else return value + data.step * (delta > 0 ? -1 : 1);
+					}
+
+					_c.r = helper( _c.r - _t.r, _c.r, data.step, _t.r );
+					_c.g = helper( _c.g - _t.g, _c.g, data.step, _t.g );
+					_c.b = helper( _c.b - _t.b, _c.b, data.step, _t.b );
+					return false;
+				};
+			} 
+		},
+		changeSize: function( args ) {
+			return {
+				data: {
+					step: args && args.step ? args.step : helper.rand( 0.2, 0.6 ),
+					targetValue: args && args.value ? args.value : helper.rand( 10, 20 )
+				},
+
+				func: function( particle, fx ){
+					if(!FX.base.size_func( particle, fx.data )) {
+						particle.eStack.continue({ 
+							data: fx.data, 
+							func: fx.func 
+						});
+					}
+				}
+			};
+		},
+		changeOpacity: function( args ) {
+				
+			return {
+
+				// Basic information on the effect's goal.
+				data: {
+					step: args && args.step ? args.step : helper.rand( 0.04, 0.1 ),
+					targetValue: args && ( args.value || args.value == 0 ) 
+						? args.value 
+						: helper.rand( 0.2, 0.9 )
+				},
+
+				// The core of the effect.
+				func: function( particle, fx ) {
+					if(!FX.base.opacity_func( particle, fx.data )) {
+						particle.eStack.continue({ 
+							data: fx.data, 
+							func: fx.func 
+						});
+					}
+
+					// If the particle fades away
+					if ( particle.opacity == 0 ) {
+						particle.consumed = true;
+					}
+				}
+			};
+		},
+		changeColor: function( args ) {
+			return {
+				data: {
+					step: args && args.step ? args.step : helper.rand(2, 10, true),
+					targetValue: args && args.value 
+						? args.value 
+						: {
+							r: helper.rand(0, 255, true),
+							g: helper.rand(0, 255, true),
+							b: helper.rand(0, 255, true)
+					  	}
+				},
+
+				func: function( particle, fx ){
+					if(!FX.base.color_func( particle, fx.data )) {
+						particle.eStack.continue({ 
+							data: fx.data, 
+							func: fx.func 
+						});
+					}
+				}
+			};
+		},
+		fadeIn: function( args ) {
+			return {
+
+				// Basic information on the effect's goal.
+				data: {
+					step: args && args.step ? args.step : helper.rand( 0.001, 0.005 ),
+					targetValue: args && args.value ? args.value : helper.rand( 0.2, 0.9 ),
+					isZero: false
+				},
+
+				// The core of the effect.
+				func: function( particle, fx ) {
+
+					// Set opacity to zero.
+					if (!fx.data.isZero) 
+					{
+						particle.opacity = -fx.data.step;
+						fx.data.isZero = true;
+					}
+
+					// Start fade in.
+					if(!FX.base.opacity_func( particle, fx.data )) {
+						particle.eStack.continue({ 
+							data: fx.data, 
+							func: fx.func 
+						});
+					}
+				}
+			};
+		},
+		fadeOut: function( step ) {
+			return changeOpacity({ value: 0, step: step ? step : 0.01 });
+		}
+	};
+
+
+//--------------------------------------------------------------------
+// Helper
+//--------------------------------------------------------------------
+
+var
+	helper = {
+		toHex: function( n ) {	
+			n = parseInt(n,10);
+			if (isNaN(n)) return "00";
+			n = Math.max(0,Math.min(n,255));
+			return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
+		},
+		SET_CONST: function( proto, prop, val ) {
+			Object.defineProperty( proto, prop, { value : val });
+		},
+		rand: function( start, end, isFloor ) {
+			var _r = Math.random() * ( !end ? start : ( end - start ) )
+			return ( isFloor ? Math.floor( _r ) : _r ) 
+				+ ( !end ? 0 : start );
+		}
+	};
+
 
 window.Pword = Pword;
 
-}));
+}))();
