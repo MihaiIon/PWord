@@ -1,7 +1,7 @@
-define( [ "helper/toHex" ], function( toHex ){
+define( [ "helper" ], function( helper ){
 	
 	// RGB -> HEX
 	return function() {
-		return toHex(this.color.r) + toHex(this.color.g) + toHex(this.color.b);
+		return helper.toHex(this.color.r) + helper.toHex(this.color.g) + helper.toHex(this.color.b);
 	};
 } );
