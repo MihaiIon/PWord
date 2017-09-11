@@ -15,12 +15,14 @@ define( [
 			// The core of the effect.
 			func: function( particle, fx ) {
 
-				if (!fx.data.sZero) 
+				// Set opacity to zero.
+				if (!fx.data.isZero) 
 				{
 					particle.opacity = -fx.data.step;
 					fx.data.isZero = true;
 				}
 
+				// Start fade in.
 				if(!opacity_func( particle, fx.data )) {
 					particle.eStack.continue({ 
 						data: fx.data, 
