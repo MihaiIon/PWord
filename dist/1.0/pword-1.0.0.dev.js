@@ -904,4 +904,4 @@ var
 
 window.Pword = Pword;
 
-}))();
+}));
